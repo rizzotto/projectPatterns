@@ -19,9 +19,8 @@ public class PayPal implements Strategy {
     private String password;
     private boolean signedIn;
 
-    static {
+    public PayPal() {
         data.put("rizzotto", "rizzotto@gmail.com");
-        data.put("eu", "eu@gmail.com");
     }
 
     @Override

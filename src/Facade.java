@@ -1,5 +1,6 @@
 import controller.PayUsingCard;
 import controller.PayPal;
+import model.Factory;
 import model.Order;
 import model.Product;
 import model.Strategy;
@@ -74,14 +75,9 @@ public class Facade {
                 );
                 String metodoPagamento = in.nextLine();
 
-                if (metodoPagamento.equals("1")) {
-                    strategy = new PayPal();
-                } else if(metodoPagamento.equals("2")){
-                    strategy = new PayUsingCard("Crédito");
-                }
-                else {
-                    strategy = new PayUsingCard("Débito");
-                }
+                //Padrão: FACTORY
+                Factory f = new Factory();
+                strategy = f.factoryPayment(metodoPagamento);
 
                 // Utilizando o padrao STRATEGY
                 pedido.processOrder(strategy);
